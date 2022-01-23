@@ -1,6 +1,6 @@
 # SnappetChallenge
 
-This project give overview report on  what class is working on today along with individual student performance
+This project gives overview report on what class is working on a day along with individual student performance
 
 ## Technologies Used:
  *** 
@@ -15,7 +15,7 @@ This project give overview report on  what class is working on today along with 
  ## To Run on local machine
  *** 
 
-  * Clone the repository from 
+  * Clone the repository from https://github.com/Swethapamula/SnappetChallenge.git
   * cd to FrontEnd folder. Run  ***npm install***.
   * cd to backend_node folder.Run ***npm install***.
   * Application needs express server up and running to read JSON file
@@ -24,7 +24,6 @@ This project give overview report on  what class is working on today along with 
 
   ## Application Functionality
   
-
 ### Dashboard
 
 ![image](https://user-images.githubusercontent.com/88610231/150688646-d73449ad-b0be-4d54-b5f0-00cbaad498da.png)
