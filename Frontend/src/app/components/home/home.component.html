@@ -1,0 +1,80 @@
+<div class="container">
+
+    <mat-form-field appearance="fill" [formGroup]="dateForm">
+        <mat-label>Select date for Learningobjective</mat-label>
+        <input matInput [matDatepicker]="picker" [max]='maxdate' formControlName="start"
+            (dateChange)="dateChange($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Students</mat-label>
+        <mat-select [formControl]="userController" multiple (valueChange)="userChanged($event)">
+            <mat-select-trigger>
+                {{ '' }}
+                <span *ngIf="userController.value?.length > 1">
+                    {{userController.value.length + ' chosen'}}
+                </span>
+                <span *ngIf="userController.value?.length == 1">
+                    {{userController.value ? userController.value[0] : ''}}
+                </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let user of usersData" [value]="user">{{user}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Subjects</mat-label>
+        <mat-select [formControl]="subjectsController" multiple (valueChange)="subjectChanged($event)">
+            <mat-select-trigger>
+                {{ '' }}
+                <span *ngIf="subjectsController.value?.length > 1">
+                    {{subjectsController.value.length + ' chosen'}}
+                </span>
+                <span *ngIf="subjectsController.value?.length == 1">
+                    {{subjectsController.value ? subjectsController.value[0] : ''}}
+                </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let subject of subjectsData" [value]="subject">{{subject}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Learning Objectives</mat-label>
+        <mat-select [formControl]="learningObjController" multiple (valueChange)="learningObjChanged($event)">
+            <mat-select-trigger>
+                {{ '' }}
+                <span *ngIf="learningObjController.value?.length > 1">
+                    {{learningObjController.value.length + ' chosen'}}
+                </span>
+                <span *ngIf="learningObjController.value?.length == 1">
+                    {{learningObjController.value ? learningObjController.value[0] : ''}}
+                </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let data of learningData" [value]="data">{{data}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="row">
+        <div id="subjectdiv" class='col-10'>
+            <h5> Performance by Subject</h5>
+            <canvas id="cht" class="chart chart-bar">
+            </canvas>
+        </div>
+        <div class='col-2'></div>
+    </div>
+    
+
+    <div class="row divchart2">
+
+            <div id="learningdiv chart2" class='col-10'>
+                <h5> Performance by Learning Objective</h5>
+
+                <canvas id="lerningchart" class="chart chart-bar">
+                </canvas>
+            </div>
+            <div class='col-2'></div>
+            
+     </div>
+</div>

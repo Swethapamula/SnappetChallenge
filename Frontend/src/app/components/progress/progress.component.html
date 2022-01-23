@@ -1,0 +1,143 @@
+<div class="form-container">
+
+    <div class="row">
+        <div class="col-4">
+            <mat-form-field appearance="fill">
+                <mat-label> Select User</mat-label>
+                <mat-select [formControl]="userController" (valueChange)="selectedUserData($event)">
+                    <mat-select-trigger>
+                        {{userController.value}}
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let user of userId" [value]="user">{{user}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+        </div>
+        <div class="col-8"> </div>
+
+    </div>
+
+    <div class='row'>
+        <div class='col-12'>
+
+            <div class='card' *ngIf="user_subjectReport">
+                <div class='card-header head'>
+                    <h5 class="heading"> Student Progress by Subject</h5>
+                </div>
+
+                <div class='card-body'>
+                    <pagination-controls class="text-center" (pageChange)="page = $event" [autoHide]="true"
+                        previousLabel="Previous" nextLabel="Next" [responsive]="true"></pagination-controls>
+
+                    <div class='table-responsive'>
+                        <table class='table table-striped table-bordered'>
+                            <thead>
+                                <tr>
+                                    <th>Submitted Date</th>
+                                    <th>Subject</th>
+                                    <th>Progress</th>
+                                    <th>Correct Answers</th>
+                                    <th>Difficulty</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="
+              let sub of user_subjectReport
+                  | paginate
+                    : {
+                        itemsPerPage: 5,
+                        currentPage: page,
+                        totalItems: totalRecords
+                      }
+              ">
+                                    <td>{{sub.time}}</td>
+                                    <td>{{ sub.subject}}</td>
+                                    <td>{{ sub.progress }}</td>
+                                    <td>{{ sub.correct}}</td>
+                                    <td>{{ sub.difficulty }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <!-- <div class="col-3">
+
+            <mat-form-field appearance="fill"  [formGroup]="date">
+            <mat-label>Select date for Learningobjective</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="start" (dateChange)="dateChange($event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+           </mat-form-field>
+          
+          </div> -->
+        <div class="col-7 ">
+        </div>
+
+
+        <div class="col-2">
+        </div>
+
+    </div>
+
+    <div class='row'>
+        <div class='col-12'>
+
+            <div class='card' *ngIf="user_Lerningbydate">
+                <div class='card-header head'>
+                    <div class='row'>
+                        <div class='col-6'>
+
+                            <h5 class="heading">Student Progress by Learning objective</h5>
+                        </div>
+                        <div class="col-6">
+
+                            <mat-form-field appearance="fill" [formGroup]="date">
+                                <mat-label>Select Date</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="start"
+                                    (dateChange)="dateChange($event)">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+
+                <div class='card-body'>
+                    <div class='table-responsive'>
+                        <table class='table table-striped table-bordered' *ngIf="user_Lerningbydate.length">
+                            <thead>
+                                <tr>
+                                    <th>Submit Date</th>
+                                    <th>Learning Objective</th>
+                                    <th>Progress</th>
+                                    <th>Correct Answers</th>
+                                    <th>Difficulty</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="
+               let obj of user_Lerningbydate">
+                                    <td>{{obj.time}}</td>
+                                    <td>{{ obj.objective}}</td>
+                                    <td>{{ obj.progress }}</td>
+                                    <td>{{ obj.correct}}</td>
+                                    <td>{{ obj.difficulty }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
