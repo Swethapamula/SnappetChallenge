@@ -14,11 +14,6 @@ export class ProgressreportService {
 
   constructor(private http: HttpClient) { }
 
-  // getreport( )
-  // {
-  //    console.log("in service");
-  //    return  this.http.get<any>("http://localhost:3000/exercise-reports");
-  // }
 
   getFormFieldsData()
   {
